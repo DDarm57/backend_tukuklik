@@ -17,7 +17,7 @@ class ProductsResource extends JsonResource
      */
     protected $showPaginate = false;
 
-    public function showPaginate($param) 
+    public function showPaginate($param)
     {
         $this->showPaginate = $param;
         return $this;
@@ -26,12 +26,14 @@ class ProductsResource extends JsonResource
     public function toArray($request)
     {
         $skuPrimary = ProductRepository::skuPrimary($this->id);
-        
+        $product_photos = ProductRepository::getProductPohotos($this->id);
+
         return [
             'id'                => $this->id,
             'product_name'      => $this->product_name,
-            'price_after_disc'  => number_format(ProductRepository::priceAfterDiscount($this->id, $skuPrimary->id, 1),0,'.','.'),
-            'price_before_disc' => number_format($this->selling_price,0,'.','.'),
+            'price_after_disc'  => number_format(ProductRepository::priceAfterDiscount($this->id, $skuPrimary->id, 1), 0, '.', '.'),
+            'price_before_disc' => number_format($this->selling_price, 0, '.', '.'),
+            'description'      => $this->description,
             'disc_percentage'   => $this->disc_percentage,
             'thumbnail'         => Helpers::image($this->thumbnail_image_source),
             'discount'          => $this->discount,
@@ -41,6 +43,7 @@ class ProductsResource extends JsonResource
             'tax'               => $this->tax,
             'tax_type'          => $this->tax_type,
             'slug'              => $this->slug,
+            'product_photos'    => $product_photos,
             'sku_primary'       => [
                 'id'            => $skuPrimary->id,
                 'sku'           => $skuPrimary->sku,
