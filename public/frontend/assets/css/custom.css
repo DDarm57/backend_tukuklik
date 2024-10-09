@@ -1,0 +1,59 @@
+.swal-modal .swal-text {
+    text-align: center;
+}
+
+.dropdown-cart { 
+    right:-30px;
+}
+
+.dropdown-account {
+    left: -60px;
+}
+
+body, 
+.heading-sm-1,
+a.text-brand-3
+{
+    color : #212121!important;
+}
+
+.bi {
+    color : #D30110;
+}
+
+.page-item .page-link {
+    background-color: #fff;
+    color : #212121
+}
+
+.page-item .page-link:hover {
+    background-color: #D30110;
+    color: #fff;
+}
+
+.nav-pagination {
+    display: block;
+}
+
+@media only screen and (max-width: 600px) {
+    .list-products-5 > div {
+        max-width: 50%;
+    }
+
+    .dropdown-account {
+        left:-70px;
+    }
+
+    .header-bottom {
+        display:none;
+    }
+
+    .d-xs-none {
+        display : none !important;
+    }
+
+    .header-shop {
+        display : none !important;
+    }
+}
+
