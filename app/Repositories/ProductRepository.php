@@ -155,8 +155,7 @@ class ProductRepository
                 $q->where('product_name', 'LIKE', '%' . $filter['search'] . '%');
             })
             ->withCount('reviews')
-            ->latest()
-            ->paginate(15);
+            ->get();
     }
 
     public static function getCategories()
